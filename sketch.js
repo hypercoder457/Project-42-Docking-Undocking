@@ -1,6 +1,7 @@
 var issImg, spaceBgImg;
 var sCraftImg1, sCraftImg2,  sCraftImg3, sCraftImg4;
-var iss, spaceCraft, hasDocked = false;
+var iss, spaceCraft;
+var hasDocked = false;
 
 function preload() {
   spaceBgImg = loadImage("images/spacebg.jpg");
@@ -12,7 +13,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1350, 800);
+  createCanvas(1350, 600);
   iss = createSprite(400, 400);
   iss.addImage(issImg);
 
@@ -23,11 +24,11 @@ function setup() {
 
 function draw() {
   background(spaceBgImg);
-
+  spaceCraft.velocityY = 2;
   if (!hasDocked) {
     spaceCraft.x += random(-1, 1);
     if (keyDown(UP_ARROW)) {
-      spaceCraft.y -= 2;
+      spaceCraft.y -= 10;
     }
 
     if (keyDown(DOWN_ARROW)) {
@@ -35,13 +36,13 @@ function draw() {
     }
 
     if (keyDown(LEFT_ARROW)) {
-      spaceCraft.x -= 2;
+      spaceCraft.x -= 10;
       spaceCraft.addImage(sCraftImg3);
     }
 
     if (keyDown(RIGHT_ARROW)) {
       spaceCraft.addImage(sCraftImg4);
-      spaceCraft.x += 2;
+      spaceCraft.x += 10;
     }
   }
 
